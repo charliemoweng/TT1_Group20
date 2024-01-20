@@ -1,12 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
 import ItineraryEdit from './ItineraryEdit';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <ItineraryEdit />
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/edit/:id' index element={<ItineraryEdit />} />
+          
+      </Routes>
+    </Router>
   );
 }
 
