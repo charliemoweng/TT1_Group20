@@ -1,4 +1,4 @@
-import Destination from "../Models/Destination";
+import Destination from "../Models/Destination.js";
 
 export const createDestination = async (req, res) => {
     const { countryName, cost, destinationName, notes } = req.body;
