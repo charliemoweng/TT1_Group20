@@ -12,11 +12,7 @@ export default function ItineraryForm({ action }) {
   const [budget, setBudget] = useState(0);
 
   const handleSubmit = () => {
-    if (action === "create") {
-      createItinerary();
-    } else if (action === "edit") {
-      // Edit Itinerary
-    }
+    createItinerary();
   };
 
   const createItinerary = async () => {
@@ -61,7 +57,7 @@ export default function ItineraryForm({ action }) {
   }, [countryName]);
 
   return (
-    <div className="flex justify-center items-center bg-slate-400">
+      <div className="flex justify-center items-center bg-slate-400">
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="itinerary-title">Title: </label>
