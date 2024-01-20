@@ -1,19 +1,27 @@
 module.exports = (sequelize, DataTypes) => {
   const Itinerary = sequelize.define("Itinerary", {
-    first_name: {
-      type: DataTypes.STRING,
+    country_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'countries',
+        key: 'id',
+      }
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'users',
+        key: 'id',
+      }
+    },
+    budget: {
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
-    last_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    username: {
-      type: DataTypes.STRING,
+    title: {
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
   });
@@ -24,3 +32,9 @@ module.exports = (sequelize, DataTypes) => {
   };
   return Itinerary;
 };
+
+sequelize.sync().then(() => {
+  console.log('Itinerary table created successfully!');
+}).catch((error) => {
+  console.error('Unable to create table : ', error);
+});
