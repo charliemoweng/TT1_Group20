@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define("User", {
+  const Itinerary = sequelize.define("Itinerary", {
     first_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -17,10 +17,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
-  User.associate = (models) => {
-    User.hasMany(models.Itinerary, {
+  Itinerary.associate = (models) => {
+    Itinerary.hasMany(models.ItineraryDestination, {
       onDelete: "cascade",
     });
   };
-  return User;
+  return Itinerary;
 };
