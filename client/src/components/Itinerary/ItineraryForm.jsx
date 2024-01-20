@@ -1,7 +1,7 @@
 import { createClaim } from "../../service/Itinerary";
 import { useState } from "react";
 
-export default function ItineraryForm() {
+export default function ItineraryForm({ action }) {
   const arrayOfCountries = ["Singapore", "Malaysia", "Indonesia"];
 
   const [title, setTitle] = useState("");
@@ -10,8 +10,14 @@ export default function ItineraryForm() {
   const [budget, setBudget] = useState(0);
 
   const handleSubmit = () => {
-    createItinerary();
+    if (action == "create") {
+      createItinerary();
+    } else if (action == "edit") {
+      // Edit Itinerary
+    }
   };
+
+  console.log("Action: " + action);
 
   const createItinerary = async () => {
     try {

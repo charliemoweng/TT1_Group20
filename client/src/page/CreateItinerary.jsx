@@ -4,7 +4,7 @@ export default function CreateItinerary() {
   return (
     <div>
       <p>Create Itinerary</p>
-      <ItineraryForm />
+      <ItineraryForm action="create" />
     </div>
   );
 }
