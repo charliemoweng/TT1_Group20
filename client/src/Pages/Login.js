@@ -24,7 +24,9 @@ function Login() {
       const data = { username: username, password: password }; //pass username and password into data
       axios.post("http://localhost:3001/login", data).then((response) => {
         //if accesstoken is valid, user will be logged in
-          console.log(response.data);
+          //console.log(response.data);
+          console.log(username)
+          console.log(password)
         
       });
     };

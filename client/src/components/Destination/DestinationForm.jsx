@@ -2,6 +2,8 @@ import CreateDestination from "../../page/CreateDestination";
 import { createClaim } from "../../service/Destination";
 import { useState } from "react";
 
+
+
 export default function ItineraryForm() {
   const arrayOfDestinations = ["Seoul", "Jakarta", "Melbourne"];
   const arrayOfCountries = ["Singapore", "Malaysia", "Indonesia"];
@@ -21,7 +23,7 @@ export default function ItineraryForm() {
       if (response) {
         console.log("Response: " + response);
       } else {
-        console.log("Not sure why empty but no error");
+        console.log(" no error");
       }
     } catch (error) {
       // Throw an error
