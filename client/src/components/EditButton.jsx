@@ -4,6 +4,8 @@ import axios from "axios"
 import ITINERARY from "../test/itinerary"
 
 const EditButton = (props) => {
+  const arrayOfCountries = ["Singapore", "Malaysia", "Korea", "Vietnam"];
+
   const [itinerary, setItinerary] = useState([])
   const [editTitle, setEditTitle] = useState('')
   const [editCountry, setEditCountry] = useState('')
@@ -14,7 +16,7 @@ const EditButton = (props) => {
     const item = ITINERARY[props.id-1]
     const title = item.title
     const budget = item.budget
-    const country = item.countryName
+    const country = item.country
     const destinations = item.destinations
     
     setItinerary(item)
@@ -23,6 +25,7 @@ const EditButton = (props) => {
     setEditDestination(destinations)
     setEditBudget(budget)
     
+    console.log(item)
   }
 
   const handleEdit = (id) => {
@@ -54,16 +57,24 @@ const EditButton = (props) => {
 
         <div>
           <label htmlFor="itinerary-country-name">Country Name: </label>
-          <select>
-            <option value={editCountry}>{editCountry}</option>
+          <select onChange={(e) => setEditCountry(e.target.value)}>
+            <option>{editCountry}</option>
+            {arrayOfCountries &&
+              arrayOfCountries.map((country) => (
+                <option key={country} value={country}>
+                  {country}
+                </option>
+              ))}
           </select>
         </div>
 
         <div>
           <label htmlFor="itinerary-destination">Destination: </label>
-          <select>
-            <option>Destination 1</option>
-            <option>Destination 2</option>
+          <select onChange={(e) => setEditDestination(e.target.value)}>
+            {editDestination && editDestination.map((destination) => (
+            <option>
+              {destination}
+            </option>))}
           </select>
         </div>
 
