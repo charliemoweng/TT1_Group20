@@ -1,3 +1,5 @@
+import './App.css'
+import DashboardTable from './components/DashboardTable'
 import "./App.css";
 import ItineraryEdit from "./ItineraryEdit";
 import CreateItinerary from "./page/CreateItinerary";
