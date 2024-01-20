@@ -1,17 +1,19 @@
 import jwt from "jsonwebtoken";
 
+export const verifyToken = async (req, res, next) => {
+    try {
+        let token = req.header("Authorization");
 
-const validateToken = (req, res, next) => {
-  const accessToken = req.header("accessToken");
-  if (!accessToken) return res.json({ error: "User not logged" });
-  try {
-    const validToken = jwt.verify(accessToken, "important secret");
-    req.user = validToken;
-    if (validToken) {
-      return next();
+        if(!token) {
+            return res.status(403).send("Access Denied");
+        }
+        if(token.startsWith("Bearer ")) {
+            token = token.slice(7, token.length).trimLeft();
+        }
+        const verified = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = verified;
+        next();
+    } catch (err) {
+        res.status(500).json({error: err.message})
     }
-  } catch (err) {
-    return res.json({ error: err });
-  }
-};
-export default validateToken;
+}

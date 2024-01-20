@@ -10,6 +10,7 @@ import Itinerary from "./Models/Itinerary.js";
 import Country from "./Models/Country.js";
 import ItineraryDestination from "./Models/ItineraryDestination.js";
 import Destination from "./Models/Destination.js";
+import authRouter from "./Routes/authRoutes.js"
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use(cors());
 
 //ROUTES
 app.use("/itinerary", itineraryRoutes);
+app.use("/", authRouter);
 
 // MY SQL SET UP WITH SEQUALIZE
 sequelize.authenticate().then(() => {
