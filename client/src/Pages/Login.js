@@ -1,8 +1,30 @@
 //import './App.css';
 //import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+//const navigate = useNavigate();
+import axios from "axios"
+
+
 
 function Login() {
+
+    // axios.post("/login-form", data)
+    // .then((response) => {
+    //     console.log(response.data);
+    //     if (response.data.error) {
+    //         alert(response.data.error)
+            
+    //     }else{
+            
+    //         //setAuthState(true)
+    //         //localStorage.setItem("accessToken",response.data)
+    //         navigate("/dashboard");
+    //     }
+    // })
+    // .catch((error) => {
+    //     console.error("Error:", error);
+    //     alert("You dont exist. Please Sign up instead..."); // Display a generic error message
+    // });
    
   return (
     
@@ -18,7 +40,7 @@ function Login() {
       type="text"
       />
 
-<button > Login </button>
+<button onClick={Login} > Login </button>
 
     </div>
 
