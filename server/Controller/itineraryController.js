@@ -22,7 +22,8 @@ export const createItinerary = async (req, res) => {
             countryName: req.body.country_name,
             user_id: req.body.user_id,
             budget: req.body.budget,
-            title: req.body.title
+            title: req.body.title,
+            destination: req.body.destination,
         })
         res.status(200).json(resContent);
     } catch {
@@ -36,7 +37,8 @@ export const editItinerary = async (req, res) => {
             { countryName: req.body.country_name,
               user_id: req.body.user_id,
               budget: req.body.budget,
-              title: req.body.title },
+              title: req.body.title,
+              destination: req.body.destination },
             { where: { _id: req.body.itinerary_id } }
           )
         res.status(200).json(result);

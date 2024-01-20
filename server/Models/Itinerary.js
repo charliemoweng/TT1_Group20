@@ -11,7 +11,8 @@ const Itinerary = sequelize.define("Itinerary", {
     allowNull: false,
   },
   budget: DataTypes.FLOAT,
-  title: DataTypes.STRING
+  title: DataTypes.STRING,
+  destination: DataTypes.ARRAY(DataTypes.INTEGER),
 });
 
 sequelize.sync().then(() => {
