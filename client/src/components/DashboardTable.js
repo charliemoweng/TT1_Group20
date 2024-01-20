@@ -31,7 +31,6 @@ const DashboardTable = (props) => {
               </th>
               <td class="px-6 py-4">{item.budget}</td>
               <td class="px-6 py-4">{item.country}</td>
-              {/* <td class="px-6 py-4">{item.destinations}</td> */}
               <td class="px-6 py-4">
                 {item.destinations.map((destination, index) => (
                   <div key={index}>{destination}</div>
