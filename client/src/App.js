@@ -1,17 +1,25 @@
 import './App.css'
 import DashboardTable from './components/DashboardTable'
+import "./App.css";
+import ItineraryEdit from "./ItineraryEdit";
+import CreateItinerary from "./page/CreateItinerary";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import DashboardTable from "./components/DashboardTable";
 
 function App() {
+  const handleSubmit = () => {};
+
+  const createItinerary = async () => {};
+
   return (
-    <div className="App">
-      <div className="bg-slate-600 p-4 rounded-sm">
-        <h3 className="font-bold  text-white">Itinerary</h3>
-      </div>
-      <div className="">
-        <DashboardTable />
-      </div>
-    </div>
-  )
+    <Router>
+      <Routes>
+        <Route path="/edit/:id" index element={<ItineraryEdit />} />
+        <Route path="/createItinerary" index element={<CreateItinerary />} />
+        {/* <DashboardTable /> */}
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
