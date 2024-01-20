@@ -79,6 +79,7 @@
     "mongodb": "^6.3.0",
     "mongoose": "^8.1.0",
     "ms": "^2.0.0",
+    "mysql2": "^3.7.1",
     "negotiator": "^0.6.3",
     "node-addon-api": "^5.1.0",
     "node-fetch": "^2.7.0",
