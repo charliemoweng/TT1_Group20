@@ -7,7 +7,7 @@ export const getAllItineraryByUserId = async(req, res) => {
         var resContent= await Itinerary.findAll({
             where: {
                 user_id: userId,
-              }
+            }
         })
         res.status(200).json(resContent);
     } catch {
@@ -31,28 +31,16 @@ export const createItinerary = async (req, res) => {
 }
 
 export const editItinerary = async (req, res) => {
-    try{
-        // const {userId} = req.params;
-        var resContent= await Itinerary.create({
-            countryName: req.body.country_name,
-            user_id: req.body.user_id,
-            budget: req.body.budget,
-            title: req.body.title
-        })
-        try {
-            const result = await Itinerary.update(
-              { countryName: req.body.country_name,
-                user_id: req.body.user_id,
-                budget: req.body.budget,
-                title: req.body.title },
-              { where: { _id: req.body.itinerary_id } }
-            )
-            handleResult(result)
-          } catch (err) {
-            handleError(err)
-          }
-        res.status(200).json(resContent);
+    try {
+        const result = await Itinerary.update(
+            { countryName: req.body.country_name,
+              user_id: req.body.user_id,
+              budget: req.body.budget,
+              title: req.body.title },
+            { where: { _id: req.body.itinerary_id } }
+          )
+        res.status(200).json(result);
     } catch {
-        res.status(404).json({message: err.message})
+        res.status(404).json({message: "Unable to edit"})
     } 
 }
