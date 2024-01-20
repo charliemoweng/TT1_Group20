@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useState } from 'react';
 
-const ItineraryEdit = () => {
+const ItineraryEdit = ({action}) => {
     const [itineraries, setItineraries] = useState([])
     const [editTitle, setEditTitle] = useState('')
     const [editCountry, setEditCountry] = useState('')
