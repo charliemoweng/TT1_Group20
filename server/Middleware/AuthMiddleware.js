@@ -1,11 +1,11 @@
-const { verify } = require("jsonwebtoken");
-const { valid } = require("semver");
+import jwt from "jsonwebtoken";
+
 
 const validateToken = (req, res, next) => {
   const accessToken = req.header("accessToken");
   if (!accessToken) return res.json({ error: "User not logged" });
   try {
-    const validToken = verify(accessToken, "important secret");
+    const validToken = jwt.verify(accessToken, "important secret");
     req.user = validToken;
     if (validToken) {
       return next();
@@ -14,4 +14,4 @@ const validateToken = (req, res, next) => {
     return res.json({ error: err });
   }
 };
-module.exports = { validateToken };
+export default validateToken;
