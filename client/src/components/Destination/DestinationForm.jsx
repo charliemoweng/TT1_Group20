@@ -3,7 +3,8 @@ import { createClaim } from "../../service/Destination";
 import { useState } from "react";
 
 export default function ItineraryForm() {
-  const arrayOfDestinations = ["Singapore", "Malaysia", "Indonesia"];
+  const arrayOfDestinations = ["Seoul", "Jakarta", "Melbourne"];
+  const arrayOfCountries = ["Singapore", "Malaysia", "Indonesia"];
 
   const [title, setTitle] = useState("");
   const [countryName, setCountryName] = useState("");
@@ -31,17 +32,16 @@ export default function ItineraryForm() {
   return (
     <div className="flex justify-center items-center bg-slate-400">
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="itinerary-title">Destination Name: </label>
-          <input
-            className="border border-slate-400"
-            type="text"
-            onChange={(e) => setTitle(e.target.value)}
-          />
+      <div>
+          <label htmlFor="itinerary-country-name">Country Name: </label>
+          <select>
+            {arrayOfCountries &&
+              arrayOfCountries.map((country) => <option>{country}</option>)}
+          </select>
         </div>
 
         <div>
-          <label htmlFor="itinerary-country-name">Country Name: </label>
+          <label htmlFor="itinerary-country-name">Destination Name: </label>
           <select>
             {arrayOfDestinations &&
               arrayOfDestinations.map((country) => <option>{country}</option>)}
