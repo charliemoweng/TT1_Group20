@@ -10,7 +10,6 @@ const EditButton = (props) => {
   const [editCountry, setEditCountry] = useState('')
   const [editDestination, setEditDestination] = useState('')
   const [editBudget, setEditBudget] = useState(0)
-  const navigate = useNavigate()
 
   const handleEditItinerary = (data) => {
     const item = ITINERARY[props.id-1]
