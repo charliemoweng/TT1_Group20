@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import helmet from "helmet";
 import cors from "cors";
 import dotenv from "dotenv";
-import itineraryRoutes from "./Routes/ItineraryRoutes.js"
+import itineraryRoutes from "./Routes/itineraryRoutes.js"
 import sequelize from "./Sequelize.js";
 import User from "./Models/User.js";
 import Itinerary from "./Models/Itinerary.js";
