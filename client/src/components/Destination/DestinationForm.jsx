@@ -4,7 +4,7 @@ import { useState } from "react";
 
 
 
-export default function ItineraryForm() {
+export default function DestinationForm() {
   const arrayOfDestinations = ["Seoul", "Jakarta", "Melbourne"];
   const arrayOfCountries = ["Singapore", "Malaysia", "Indonesia"];
 
