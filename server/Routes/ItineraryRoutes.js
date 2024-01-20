@@ -1,6 +1,6 @@
 import express from "express";
 import validateToken from "../Middleware/AuthMiddleware.js";
-import { createItinerary, getAllItineraryById } from "../Controller/itineraryController.js";
+import { createItinerary, getAllItineraryByUserId } from "../Controller/itineraryController.js";
 
 
 const router = express.Router();

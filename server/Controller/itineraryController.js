@@ -19,7 +19,7 @@ export const createItinerary = async (req, res) => {
     try{
         // const {userId} = req.params;
         var resContent= await Itinerary.create({
-            country_name: req.body.country_name,
+            countryName: req.body.country_name,
             user_id: req.body.user_id,
             budget: req.body.budget,
             title: req.body.title
