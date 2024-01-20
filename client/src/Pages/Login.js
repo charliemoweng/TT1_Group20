@@ -45,7 +45,7 @@ function Login() {
       type="password"
       />
 
-<button onClick={Login} > Login </button>
+    <button onClick={login} > Login </button>
 
     </div>
 
