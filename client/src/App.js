@@ -2,7 +2,6 @@ import "./App.css";
 import CreateItinerary from "./page/CreateItinerary";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Dashboard from './page/Dashboard';
-import api from './api/api'
 import Login from './Pages/Login';
 import CreateDestination from './page/CreateDestination';
 import ItineraryEdit from './ItineraryEdit'
