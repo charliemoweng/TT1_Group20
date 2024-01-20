@@ -1,27 +1,17 @@
-//import logo from './logo.svg';
-//import './App.css';
-import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom'
-import Login from "./Pages/Login";
-
+import './App.css';
+import ItineraryEdit from './ItineraryEdit';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import DashboardTable from './components/DashboardTable'
 
 function App() {
   return (
-    
-    <div className="app">
-      <Router>
-     <Routes>
-          
-         
-          <Route path='/login' element={<Login />} />
-         
-
-        </Routes>
-
-        </Router>
-    </div>
-
-
+    <Router>
+      <Routes>
+        <Route path='/edit/:id' index element={<ItineraryEdit />} />
+        <DashboardTable />
+      </Routes>
+    </Router>
   );
 }
 
-export default App;
+export default App
