@@ -32,7 +32,7 @@ export default function DestinationForm() {
   };
 
   return (
-    <div className="flex justify-center items-center bg-slate-400">
+    <div className="DestinationForm">
       <form onSubmit={handleSubmit}>
       <div>
           <label htmlFor="itinerary-country-name">Country Name: </label>
@@ -43,7 +43,7 @@ export default function DestinationForm() {
         </div>
 
         <div>
-          <label htmlFor="itinerary-country-name">Destination Name: </label>
+          <label htmlFor="itinerary-destination-name">Destination Name: </label>
           <select>
             {arrayOfDestinations &&
               arrayOfDestinations.map((country) => <option>{country}</option>)}
