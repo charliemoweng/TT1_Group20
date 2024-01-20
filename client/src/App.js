@@ -2,12 +2,12 @@ import "./App.css";
 import EditItinerary from "./page/EditItinerary";
 import CreateItinerary from "./page/CreateItinerary";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import DashboardTable from './page/Dashboard';
+import Dashboard from './page/Dashboard';
 import api from './api/api'
 import Login from './Pages/Login';
 import CreateDestination from './page/CreateDestination';
 import ItineraryEdit from './ItineraryEdit'
-import Dashboard from './page/Dashboard'
+import DashboardTable from "./components/DashboardTable";
 
 
 function App() {

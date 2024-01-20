@@ -25,7 +25,7 @@ function Login() {
     const navigate = useNavigate();
     useEffect(() =>
     {
-      if (cookies.user){
+      if (cookies){
         navigate("/dashboard")
       }
     }, [])

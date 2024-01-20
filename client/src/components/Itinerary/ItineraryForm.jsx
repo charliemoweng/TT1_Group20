@@ -1,36 +1,33 @@
 import { createClaim } from "../../service/Itinerary";
-import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import api from "../../api/api";
+import { useState, useEffect } from "react";
+import { getDestinationByCountry } from "../../service/Itinerary";
 
-export default function ItineraryForm() {
-  const arrayOfCountries = ["Singapore", "Malaysia", "Indonesia"];
+export default function ItineraryForm({ action }) {
+  const arrayOfCountries = ["Singapore", "Malaysia", "Korea", "Vietnam"];
 
   const [title, setTitle] = useState("");
-  const [countryName, setCountryName] = useState("");
-  const [destination, setDestination] = useState("");
+  const [countryName, setCountryName] = useState("Singapore");
+  const [destinations, setDestinations] = useState([""]);
+  const [selectedDestination, setSelectedDestination] = useState("");
   const [budget, setBudget] = useState(0);
-  
-  const [itineraries, setItineraries] = useState([])
-  const [editTitle, setEditTitle] = useState('')
-  const [editCountry, setEditCountry] = useState('')
-  const [editDestination, setEditDestination] = useState('')
-  const [editBudget, setEditBudget] = useState(0)
-  const navigate = useNavigate()
 
   const handleSubmit = () => {
     createItinerary();
   };
 
-  const handleEdit = () => {
-    editItinerary();  
-  }
-
   const createItinerary = async () => {
+    const toJson = {
+      country_name: countryName,
+      user_id: localStorage.getItem("userId"),
+      budget: 100,
+      title: title,
+    };
+
     try {
-      const response = await createClaim();
+      const response = await createClaim(toJson);
+      console.log("Response 1: " + response);
       if (response) {
-        console.log("Response: " + response);
+        console.log("Response 2: " + response);
       } else {
         console.log("Not sure why empty but no error");
       }
@@ -40,32 +37,26 @@ export default function ItineraryForm() {
     }
   };
 
-  const editItinerary = async (id) => {
-    const itinerary = itineraries.find((itinerary) => (itinerary.id).toString() === id)
-
-    const updatedItinerary = {
-      id,
-      title: editTitle,
-      countryName: editCountry,
-      destination: editDestination,
-      budget: editBudget
-    }
+  const retrieveDestinationByCountry = async () => {
     try {
-      const response = await api.put(`/edit/${id}`, updatedItinerary)
-      setItineraries(itineraries.map((itinerary) => itinerary.id === id ? {...response.body} : itinerary))
-      setEditTitle('')
-      setEditCountry('')
-      setEditDestination('')
-      setEditBudget(0)
-      navigate('/')
+      const response = await getDestinationByCountry(countryName);
+      if (response) {
+        setDestinations(response.destination);
+      }
     } catch (error) {
-      console.log("Error: " + error)
+      console.log("Error: " + error);
     }
-  }
+  };
+
+  useEffect(() => {
+    getDestinationByCountry();
+  });
+
+  useEffect(() => {
+    retrieveDestinationByCountry();
+  }, [countryName]);
 
   return (
-    <>
-      {title && countryName && destination && budget && 
       <div className="flex justify-center items-center bg-slate-400">
       <form onSubmit={handleSubmit}>
         <div>
@@ -74,28 +65,41 @@ export default function ItineraryForm() {
             className="border border-slate-400"
             type="text"
             onChange={(e) => setTitle(e.target.value)}
+            required
           />
         </div>
 
         <div>
           <label htmlFor="itinerary-country-name">Country Name: </label>
-          <select>
+          <select onChange={(e) => setCountryName(e.target.value)}>
             {arrayOfCountries &&
-              arrayOfCountries.map((country) => <option>{country}</option>)}
+              arrayOfCountries.map((country) => (
+                <option key={country} value={country}>
+                  {country}
+                </option>
+              ))}
           </select>
         </div>
 
         <div>
           <label htmlFor="itinerary-destination">Destination: </label>
-          <select>
-            <option>Destination 1</option>
-            <option>Destination 2</option>
+          <select onChange={(e) => setSelectedDestination(e.target.value)}>
+            {destinations.map((destination) => (
+              <option key={destination} value={destination}>
+                {destination}
+              </option>
+            ))}
           </select>
         </div>
 
         <div>
           <label htmlFor="itinerary-budget">Budget: </label>
-          <input className="border border-slate-400" type="number" />
+          <input
+            className="border border-slate-400"
+            type="number"
+            onChange={(e) => setBudget(e.target.value)}
+            required
+          />
         </div>
 
         <div>
@@ -105,56 +109,5 @@ export default function ItineraryForm() {
         </div>
       </form>
     </div>
-    }
-
-    {editTitle && editCountry && editDestination && editBudget && 
-    <div className="flex justify-center items-center bg-slate-400">
-      <h2>Edit Itinerary</h2>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <div>
-          <label htmlFor="itinerary-title">Title: </label>
-          <input
-            className="border border-slate-400"
-            type="text"
-            onChange={(e) => setEditTitle(e.target.value)}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="itinerary-country-name">Country Name: </label>
-          <select>
-            {arrayOfCountries &&
-              arrayOfCountries.map((country) => <option>{country}</option>)}
-          </select>
-        </div>
-
-        <div>
-          <label htmlFor="itinerary-destination">Destination: </label>
-          <select>
-            <option>Destination 1</option>
-            <option>Destination 2</option>
-          </select>
-        </div>
-
-        <div>
-          <label htmlFor="itinerary-budget">Budget: </label>
-          <input 
-            className="border border-slate-400" 
-            type="number" 
-            id="itinerary-budget"
-            value={editBudget}
-            onChange={(e) => setEditBudget(e.target.value)}
-          />
-        </div>
-
-        <div>
-          <button type="submit" className="border border-slate-500" >
-            Submit
-          </button>
-        </div>
-      </form>
-    </div>
-    }
-    </>
   );
 }
