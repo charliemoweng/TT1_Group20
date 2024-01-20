@@ -2,8 +2,8 @@ import { DataTypes } from "sequelize";
 import sequelize from "../Sequelize.js";
 
 const Itinerary = sequelize.define("Itinerary", {
-  country_id: {
-    type: DataTypes.INTEGER,
+  countryName: {
+    type: DataTypes.STRING,
     allowNull: false,
   },
   user_id: {

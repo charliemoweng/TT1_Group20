@@ -14,7 +14,7 @@ const Destination = sequelize.define("Destination", {
     type: DataTypes.TEXT("medium"),
     allowNull: false,
   },
-  country_id: DataTypes.INTEGER
+  countryName: DataTypes.STRING
 });
 
 sequelize.sync().then(() => {
