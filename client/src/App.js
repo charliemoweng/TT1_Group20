@@ -1,7 +1,5 @@
-import './App.css'
-import DashboardTable from './components/DashboardTable'
 import "./App.css";
-import ItineraryEdit from "./ItineraryEdit";
+import EditItinerary from "./page/EditItinerary";
 import CreateItinerary from "./page/CreateItinerary";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import DashboardTable from "./components/DashboardTable";
@@ -15,7 +13,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/edit/:id" index element={<ItineraryEdit />} />
+        <Route path="/edit/:id" index element={<EditItinerary />} />
         <Route path="/createItinerary" index element={<CreateItinerary />} />
         {/* <DashboardTable /> */}
       </Routes>
