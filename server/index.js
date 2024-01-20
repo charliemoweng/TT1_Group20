@@ -4,6 +4,7 @@ import helmet from "helmet";
 import cors from "cors";
 import dotenv from "dotenv";
 import itineraryRoutes from "./Routes/ItineraryRoutes.js"
+import destinationRoutes from "./Routes/destinationRoutes.js"
 import sequelize from "./Sequelize.js";
 import User from "./Models/User.js";
 import Itinerary from "./Models/Itinerary.js";
@@ -26,6 +27,7 @@ app.use(cors());
 //ROUTES
 app.use("/itinerary", itineraryRoutes);
 app.use("/", authRouter);
+app.use("/destination", destinationRoutes);
 
 // MY SQL SET UP WITH SEQUALIZE
 sequelize.authenticate().then(() => {
