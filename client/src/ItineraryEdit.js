@@ -1,22 +1,28 @@
 import { useParams } from 'react-router-dom'
+import { useState } from 'react';
 
-const ItineraryEdit = ({
-    itineraries, 
-}) => {
+const ItineraryEdit = () => {
+    const [itineraries, setItineraries] = useState([])
+    const [editTitle, setEditTitle] = useState('')
+    const [editCountry, setEditCountry] = useState('')
+    const [editDestination, setEditDestination] = useState('')
+    const [editBudget, setEditBudget] = useState(0)
 
-    const { id } = useParams() 
+    const handleEdit = () => {
+        console.log('edit')
+    }
 
     return (
-        <main>
+        <main className='EditPost'>
             <>
-                <h2>Edit Itinerary</h2>
+                <h2 className="">Edit Itinerary</h2>
                 <form onSubmit={(e) => {e.preventDefault()}}>
                     <label htmlFor='postTitle'>Title</label>
                     <input 
                         id="postTitle" 
                         type='text'
-                        value=""
-                        // onChange={(e) => setEditTitle(e.target.value)}
+                        value={editTitle}
+                        onChange={(e) => setEditTitle(e.target.value)}
                     />
 
                     <label htmlFor='countryName'>Country Name</label>
@@ -36,7 +42,7 @@ const ItineraryEdit = ({
                         value=""
                         // onChange={(e) => setEditTitle(e.target.value)}
                     />
-                    
+
                     <button type='submit'>Submit</button>
                 </form>
             </>
