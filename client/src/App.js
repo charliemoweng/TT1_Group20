@@ -1,5 +1,4 @@
 import "./App.css";
-import EditItinerary from "./page/EditItinerary";
 import CreateItinerary from "./page/CreateItinerary";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Dashboard from './page/Dashboard';
@@ -13,7 +12,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/edit/:id" index element={<EditItinerary />} />
         <Route path="/createItinerary" index element={<CreateItinerary />} />
         <Route path="/dashboard" index element={<Dashboard />} />
       </Routes>
