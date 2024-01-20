@@ -17,7 +17,6 @@ export const createDestination = async (req, res) => {
   
     return res.status(201).json({
       message: "Destination created successfuly"
-    //   destination: newDestination,
     });
 }
 
@@ -33,3 +32,32 @@ export const getAllDestinationsByCountry = async (req, res) => {
         res.status(404).json({message: err.message})
     }
 }
+
+export const editDestination = async (req, res) => {
+    try {
+        const result = await Destination.update(
+            { countryName: req.body.country_name,
+              cost: req.body.cost,
+              destinationName: req.body.destinationName,
+              notes: req.body.notes },
+            { where: { _id: req.body.destination_id } }
+          )
+        res.status(200).json(result);
+    } catch {
+        res.status(404).json({message: "Unable to edit"})
+    } 
+}
+
+export const deleteDestination = async (req, res) => {
+    try {
+        const destinationId = req.params.destinationId
+        await Destination.destroy({
+          where: {
+            id: destinationId
+          }
+        })
+        res.status(200).json(result);
+    } catch {
+        res.status(404).json({message: "Unable to delete"})
+    } 
+  }
