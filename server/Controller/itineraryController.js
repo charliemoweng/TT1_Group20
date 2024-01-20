@@ -44,3 +44,17 @@ export const editItinerary = async (req, res) => {
         res.status(404).json({message: "Unable to edit"})
     } 
 }
+
+export const deleteItinerary = async (req, res) => {
+    try {
+        const itineraryId= req.params.itineraryId
+        await Itinerary.destroy({
+          where: {
+            id: itineraryId
+          }
+        })
+        res.status(200).json(result);
+    } catch {
+        res.status(404).json({message: "Unable to delete itinerary"})
+    } 
+}

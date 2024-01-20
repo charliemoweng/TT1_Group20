@@ -58,6 +58,6 @@ export const deleteDestination = async (req, res) => {
         })
         res.status(200).json(result);
     } catch {
-        res.status(404).json({message: "Unable to delete"})
+        res.status(404).json({message: "Unable to delete destination"})
     } 
-  }
+}
