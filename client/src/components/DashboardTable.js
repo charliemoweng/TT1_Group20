@@ -1,7 +1,24 @@
+import { useEffect, useState } from 'react'
 import ITINERARY from '../test/itinerary'
 import EditButton from './EditButton'
+import axios from 'axios'
 
 const DashboardTable = (props) => {
+  const [Itineraries, setItineraries] = useState([]);
+
+  useEffect(() => {
+    const fetchItineraries = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/itinerary/1")
+        setItineraries(response.data)
+      } catch (error) {
+        console.log(error)
+      } 
+    }
+    fetchItineraries()
+
+  }, [])
+
   return (
     <div class="relative overflow-x-auto mx-8 my-8 rounded-md">
       <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -23,7 +40,7 @@ const DashboardTable = (props) => {
           </tr>
         </thead>
         <tbody>
-          {ITINERARY.map((item) => (
+          {Itineraries.map((item) => (
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
               <th
                 scope="row"
@@ -32,12 +49,12 @@ const DashboardTable = (props) => {
                 {item.title}
               </th>
               <td class="px-6 py-4">{item.budget}</td>
-              <td class="px-6 py-4">{item.country}</td>
-              <td class="px-6 py-4">
+              <td class="px-6 py-4">{item.countryName}</td>
+              {/* <td class="px-6 py-4">
                 {item.destinations.map((destination, index) => (
                   <div key={index}>{destination}</div>
                 ))}
-              </td>
+              </td> */}
               <td>
                 <EditButton id={item.id} />
               </td>

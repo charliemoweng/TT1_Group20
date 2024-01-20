@@ -26,6 +26,7 @@ function Login() {
     useEffect(() =>
     {
       if (cookies){
+        console.log(cookies)
         navigate("/dashboard")
       }
     }, [])
