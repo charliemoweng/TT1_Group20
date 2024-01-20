@@ -5,6 +5,11 @@ import cors from "cors";
 import dotenv from "dotenv";
 import itineraryRoutes from "./Routes/ItineraryRoutes.js"
 import sequelize from "./Sequelize.js";
+import User from "./Models/User.js";
+import Itinerary from "./Models/Itinerary.js";
+import Country from "./Models/Country.js";
+import ItineraryDestination from "./Models/ItineraryDestination.js";
+import Destination from "./Models/Destination.js";
 
 dotenv.config();
 

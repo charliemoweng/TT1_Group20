@@ -1,22 +1,27 @@
-module.exports = (sequelize, DataTypes) => {
-  const Destination = sequelize.define("Destination", {
-    cost: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
-    },
-    destinationName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    notes: {
-      type: DataTypes.TEXT("medium"),
-      allowNull: false,
-    },
-  });
-  Destination.associate = (models) => {
-    Destination.hasMany(models.ItineraryDestination, {
-      onDelete: "cascade",
-    });
-  };
-  return Destination;
-};
+import { DataTypes } from "sequelize";
+import sequelize from "../Sequelize.js";
+
+const Destination = sequelize.define("Destination", {
+  cost: {
+    type: DataTypes.FLOAT,
+    allowNull: false,
+  },
+  destinationName: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  notes: {
+    type: DataTypes.TEXT("medium"),
+    allowNull: false,
+  },
+  country_id: DataTypes.INTEGER
+});
+
+sequelize.sync().then(() => {
+  console.log('Destination table created successfully!');
+}).catch((error) => {
+  console.error('Unable to create Destination table : ', error);
+});
+
+
+export default Destination;
