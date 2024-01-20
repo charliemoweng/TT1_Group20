@@ -4,6 +4,8 @@ import axios from "axios"
 import ITINERARY from "../test/itinerary"
 
 const EditButton = (props) => {
+  const arrayOfCountries = ["Singapore", "Malaysia", "Korea", "Vietnam"];
+
   const [itinerary, setItinerary] = useState([])
   const [editTitle, setEditTitle] = useState('')
   const [editCountry, setEditCountry] = useState('')
@@ -14,7 +16,7 @@ const EditButton = (props) => {
     const item = ITINERARY[props.id-1]
     const title = item.title
     const budget = item.budget
-    const country = item.countryName
+    const country = item.country
     const destinations = item.destinations
     
     setItinerary(item)
@@ -22,11 +24,15 @@ const EditButton = (props) => {
     setEditCountry(country)
     setEditDestination(destinations)
     setEditBudget(budget)
-    
   }
 
   const handleEdit = (id) => {
-    // axios.put(`http://localhost:8000/itinerary/${id}`, {title: editTitle, budget: editBudget, countryName: editCountry, destinations: editDestination})
+    // axios.put(`http://localhost:8000/dashboard/${id}`, {title: editTitle, budget: editBudget, countryName: editCountry, destinations: editDestination})
+  }
+
+  const handleDeleteItinerary = (data) => {
+    const id = props.id
+    // axios.delete(`http://localhost:8000/dashboard/${id}`)
   }
   
   return (
@@ -37,6 +43,14 @@ const EditButton = (props) => {
       onClick={handleEditItinerary}
     >
       Edit
+    </button>
+
+    <button
+      type="submit"
+      class="text-white bg-red-300 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-800 dark:hover:bg-gray-900 dark:focus:ring-blue-800 hover:scale-105 ease-in-out duration-500"
+      onClick={handleDeleteItinerary}
+    >
+      Delete
     </button>
 
     <div className="flex justify-center items-center bg-slate-400">
@@ -54,16 +68,24 @@ const EditButton = (props) => {
 
         <div>
           <label htmlFor="itinerary-country-name">Country Name: </label>
-          <select>
-            <option value={editCountry}>{editCountry}</option>
+          <select onChange={(e) => setEditCountry(e.target.value)}>
+            <option>{editCountry}</option>
+            {arrayOfCountries &&
+              arrayOfCountries.map((country) => (
+                <option key={country} value={country}>
+                  {country}
+                </option>
+              ))}
           </select>
         </div>
 
         <div>
           <label htmlFor="itinerary-destination">Destination: </label>
-          <select>
-            <option>Destination 1</option>
-            <option>Destination 2</option>
+          <select onChange={(e) => setEditDestination(e.target.value)}>
+            {editDestination && editDestination.map((destination) => (
+            <option>
+              {destination}
+            </option>))}
           </select>
         </div>
 
