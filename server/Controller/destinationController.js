@@ -1,4 +1,4 @@
-import Destination from "../Models/Destination";
+import Destination from "../Models/Destination.js";
 
 export const createDestination = async (req, res) => {
     const { countryName, cost, destinationName, notes } = req.body;
@@ -58,6 +58,6 @@ export const deleteDestination = async (req, res) => {
         })
         res.status(200).json(result);
     } catch {
-        res.status(404).json({message: "Unable to delete"})
+        res.status(404).json({message: "Unable to delete destination"})
     } 
-  }
+}
