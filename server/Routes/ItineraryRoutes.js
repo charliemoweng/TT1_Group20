@@ -1,13 +1,13 @@
 import express from "express";
 import validateToken from "../Middleware/AuthMiddleware.js";
-import { createItinerary, getAllItineraryByUserId } from "../Controller/itineraryController.js";
+import { createItinerary, editItinerary, getAllItineraryByUserId } from "../Controller/itineraryController.js";
 
 
 const router = express.Router();
 // routes
 // router.get("<route>", "<optional> verifyToken", "<controller>")
-router.get("/:userId", getAllItineraryByUserId);
-router.post("/create", createItinerary);
-
+router.get("/:userId", validateToken, getAllItineraryByUserId);
+router.post("/create", validateToken, createItinerary);
+router.put("/edit", validateToken, editItinerary)
 
 export default router;
