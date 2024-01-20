@@ -1,4 +1,5 @@
 import ITINERARY from '../test/itinerary'
+import EditButton from './EditButton'
 
 const DashboardTable = (props) => {
   return (
@@ -18,6 +19,7 @@ const DashboardTable = (props) => {
             <th scope="col" class="px-6 py-3">
               List of destinations
             </th>
+            <th scope="col" class="px-6 py-3"></th>
           </tr>
         </thead>
         <tbody>
@@ -35,6 +37,9 @@ const DashboardTable = (props) => {
                 {item.destinations.map((destination, index) => (
                   <div key={index}>{destination}</div>
                 ))}
+              </td>
+              <td>
+                <EditButton id={item.id} />
               </td>
             </tr>
           ))}
