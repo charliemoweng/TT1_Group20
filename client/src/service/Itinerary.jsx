@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const createClaim = async (body) => {
+export const createItinerary = async (body) => {
   console.log(body);
   const response = await axios.post(
     "http://localhost:21444/auth/v1/test",
@@ -19,6 +19,7 @@ export const getDestinationByCountry = async (country) => {
     Singapore: ["MBS", "USS", "RWS"],
     Malaysia: ["Kuala Lumpur", "Selangor", "Johor"],
     Korea: ["Itaewon", "Seoul"],
+    Vietnam: ["HCM"],
   };
   try {
     const response = {

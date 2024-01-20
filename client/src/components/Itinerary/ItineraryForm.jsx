@@ -1,8 +1,9 @@
 import { createClaim } from "../../service/Itinerary";
 import { useState, useEffect } from "react";
 import { getDestinationByCountry } from "../../service/Itinerary";
+import { createItinerary } from "../../service/Itinerary";
 
-export default function ItineraryForm({ action }) {
+export default function ItineraryForm() {
   const arrayOfCountries = ["Singapore", "Malaysia", "Korea", "Vietnam"];
 
   const [title, setTitle] = useState("");
@@ -12,10 +13,10 @@ export default function ItineraryForm({ action }) {
   const [budget, setBudget] = useState(0);
 
   const handleSubmit = () => {
-    createItinerary();
+    creatingItinerary();
   };
 
-  const createItinerary = async () => {
+  const creatingItinerary = async () => {
     const toJson = {
       country_name: countryName,
       user_id: localStorage.getItem("userId"),
@@ -24,7 +25,7 @@ export default function ItineraryForm({ action }) {
     };
 
     try {
-      const response = await createClaim(toJson);
+      const response = await createItinerary(toJson);
       console.log("Response 1: " + response);
       if (response) {
         console.log("Response 2: " + response);
