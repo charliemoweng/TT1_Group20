@@ -1,4 +1,4 @@
-import Itinerary from "../Models/Itinerary";
+import Itinerary from "../Models/Itinerary.js";
 
 
 export const getAllItineraryByUserId = async(req, res) => {

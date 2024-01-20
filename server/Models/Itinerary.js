@@ -13,11 +13,6 @@ const Itinerary = sequelize.define("Itinerary", {
   budget: DataTypes.FLOAT,
   title: DataTypes.STRING
 });
-Itinerary.associate = (models) => {
-  Itinerary.hasMany(models.ItineraryDestination, {
-    onDelete: "cascade",
-  });
-};
 
 sequelize.sync().then(() => {
   console.log('Itinerary table created successfully!');

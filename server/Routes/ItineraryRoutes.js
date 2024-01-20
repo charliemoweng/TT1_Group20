@@ -6,8 +6,8 @@ import { createItinerary, getAllItineraryByUserId } from "../Controller/itinerar
 const router = express.Router();
 // routes
 // router.get("<route>", "<optional> verifyToken", "<controller>")
-router.get("/:userId", validateToken, getAllItineraryByUserId);
-router.post("/", validateToken, createItinerary);
+router.get("/:userId", getAllItineraryByUserId);
+router.post("/create", createItinerary);
 
 
 export default router;

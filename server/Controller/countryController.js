@@ -7,4 +7,5 @@ const getAllCountries = async (req, res) => {
     res.status(200).json(countries);
 }
 
+
 export default getAllCountries;

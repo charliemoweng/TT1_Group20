@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import helmet from "helmet";
 import cors from "cors";
 import dotenv from "dotenv";
-import itineraryRoutes from "./Routes/itineraryRoutes.js"
+import itineraryRoutes from "./Routes/ItineraryRoutes.js"
 import sequelize from "./Sequelize.js";
 import User from "./Models/User.js";
 import Itinerary from "./Models/Itinerary.js";
@@ -31,3 +31,9 @@ sequelize.authenticate().then(() => {
  }).catch((error) => {
     console.error('Unable to connect to the database: ', error);
  });
+
+ const port = 3001;
+
+app.listen(port, () => {
+    console.log(`server is up and listening on port ${port}`);
+});
