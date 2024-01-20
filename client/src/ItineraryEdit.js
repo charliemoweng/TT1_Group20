@@ -18,20 +18,17 @@ const ItineraryEdit = ({
                         value=""
                         // onChange={(e) => setEditTitle(e.target.value)}
                     />
+
                     <label htmlFor='countryName'>Country Name</label>
-                    <input 
-                        id="countryName" 
-                        type='text'
-                        value=""
-                        // onChange={(e) => setEditTitle(e.target.value)}
-                    />
+                    <select name='countries' id='countryName'>
+                        <option value="">Korea</option>
+                    </select>
+
                     <label htmlFor='destination'>Destination</label>
-                    <input 
-                        id="destination" 
-                        type='text'
-                        value=""
-                        // onChange={(e) => setEditTitle(e.target.value)}
-                    />
+                    <select name='destination' id='destination'>
+                        <option value="">Seoul</option>
+                    </select>
+
                     <label htmlFor='budget'>Budget</label>
                     <input 
                         id="budget" 
@@ -39,6 +36,7 @@ const ItineraryEdit = ({
                         value=""
                         // onChange={(e) => setEditTitle(e.target.value)}
                     />
+                    
                     <button type='submit'>Submit</button>
                 </form>
             </>
