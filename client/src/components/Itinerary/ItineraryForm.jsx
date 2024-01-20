@@ -148,7 +148,7 @@ export default function ItineraryForm() {
         </div>
 
         <div>
-          <button type="submit" className="border border-slate-500" onClick={() => handleEdit(itinerary.id)}>
+          <button type="submit" className="border border-slate-500" >
             Submit
           </button>
         </div>
