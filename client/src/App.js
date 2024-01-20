@@ -2,7 +2,7 @@ import "./App.css";
 import EditItinerary from "./page/EditItinerary";
 import CreateItinerary from "./page/CreateItinerary";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import DashboardTable from './page/Dashboard';
+import Dashboard from './page/Dashboard';
 import api from './api/api'
 
 function App() {
