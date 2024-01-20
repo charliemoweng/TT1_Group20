@@ -23,7 +23,7 @@ export default function DestinationForm() {
       if (response) {
         console.log("Response: " + response);
       } else {
-        console.log(" no error");
+        console.log("no error");
       }
     } catch (error) {
       // Throw an error
@@ -32,7 +32,7 @@ export default function DestinationForm() {
   };
 
   return (
-    <div className="DestinationForm">
+    <div className="relative overflow-x-auto mx-8 my-8 rounded-md bg-slate-200 px-4 py-4">
       <form onSubmit={handleSubmit}>
       <div>
           <label htmlFor="itinerary-country-name">Country Name: </label>
